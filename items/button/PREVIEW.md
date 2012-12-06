@@ -1,1 +1,1 @@
-![button](/bikkuri/BEM/blob/master/items/button/button.png "Button")
+![button](https://github.com/bikkuri/BEM/blob/master/items/button/button.png?raw=true "Button")
