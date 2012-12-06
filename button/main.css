@@ -1,0 +1,157 @@
+@charset "utf-8";
+/*
+	Main site styles
+	Version:  06.12.2012
+
+
+	Structure
+	--------------------------------------------
+	1. Base style
+	
+*/	
+
+/* --------------- reset.css --------------- */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, em, img, q, strong, sub, sup, b, u, i,  dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, address, select, textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	font-size: 100%;
+    font-family: Arial;
+}
+
+b {
+	font-weight: bold;
+}
+
+a {                                      	
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+table {						
+	border-collapse: collapse; 
+	border-spacing: 0;
+}
+td, td img {
+	vertical-align: top;
+} 
+input, select, button, textarea {
+	margin: 0; 		
+	padding: 0;
+	font-size: 100%;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+nav ul {
+	 list-style: none; 
+}
+
+ 
+label {
+	cursor: pointer;
+}
+
+ul {
+	list-style: none;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="search"]:focus {
+	outline: none;
+	-webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+input[type=submit]::-moz-focus-inner { 
+	padding:0;
+	border:0;
+}
+textarea{
+	overflow: auto;
+}
+sup {
+	vertical-align: super;
+	font-size: smaller;
+}
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+	border: none;
+	padding:0;
+	margin:0;
+}
+
+::-webkit-input-placeholder {
+    color: #444444;
+}
+:-moz-placeholder {
+	color: #444444;
+}
+
+*{
+    -webkit-text-size-adjust: none; 
+    outline: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0); 
+}
+
+/* --------------- /reset.css -------- */
+
+/*----------------- Base style ---------------*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.button:active {
+    background: -webkit-linear-gradient(bottom, #18aaab, #008099);
+    background: -moz-linear-gradient(bottom, #18aaab, #008099);
+    background: -o-linear-gradient(bottom, #18aaab, #008099);
+    background: -ms-linear-gradient(bottom, #18aaab, #008099);
+    background: linear-gradient(bottom, #18aaab, #008099);
+}
+
+.button {
+    padding: 0 45px 0 45px;
+    height: 36px;
+    background: -webkit-linear-gradient(top, #18aaab, #008099);
+    background: -moz-linear-gradient(top, #18aaab, #008099);
+    background: -o-linear-gradient(top, #18aaab, #008099);
+    background: -ms-linear-gradient(top, #18aaab, #008099);
+    background: linear-gradient(top, #18aaab, #008099);
+    border-radius: 35px;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    text-shadow: 1px 1px 1px #004f5c;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.button_form-auth {
+	margin: 25px 0 0 25px;
+}

@@ -1,0 +1,7 @@
+.button:active {
+	background-image: url(ie9-button-background-active.png);	
+}
+
+.button {
+	background-image: url(ie9-button-background.png);
+}
