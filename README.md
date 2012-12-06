@@ -1,17 +1,17 @@
 BEM
 ===
-forms
+__forms__
 - - - - - - - - - - - 
 
-## items ##
+__items__
 * button
 - - - - - - - - - - -
 
-## nav ##
+__nav__
 - - - - - - - - - - -
 
-## skeleton ##
+__skeleton__
 - - - - - - - - - - -
 
-## uncategorized ##
+__uncategorized__
 - - - - - - - - - - -
