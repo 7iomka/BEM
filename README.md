@@ -3,15 +3,15 @@ BEM
 forms
 - - - - - - - - - - - 
 
-*items*
+## items ##
 * button
 - - - - - - - - - - -
 
-*nav*
+## nav ##
 - - - - - - - - - - -
 
-*skeleton*
+## skeleton ##
 - - - - - - - - - - -
 
-*uncategorized*
+## uncategorized ##
 - - - - - - - - - - -
