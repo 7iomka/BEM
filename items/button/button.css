@@ -1,19 +1,18 @@
 .button:hover {
     background: #eee;
-}
+}    
 .button:active {
-	background: #aaa;
+    background: #aaa;
 }
 .button {
     padding: 0;
     border: none;
     color: #fff;
-	font: 17px/30px Verdana, Geneva, sans-serif;
-	height: 30px;
+    font: 17px/30px Verdana, Geneva, sans-serif;
+    height: 30px;
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
-	background: #ccc;
-	outline: none;
+    background: #ccc;
+    outline: none;
 }
-
