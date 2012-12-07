@@ -2,12 +2,8 @@
 	text-align: center;
 	height: 25px;
 }
-.pagination__list {
-	display: inline-block;
-}
 .pagination__item {
-	float: left; 
-	margin-right: 4px;
+	display: inline-block;
 	width: 24px;
 	height: 25px;
 	overflow: hidden;
@@ -36,17 +32,3 @@ a.pagination__link {
 	overflow: hidden;
 	text-indent: -9999px;
 }
-/*
-a.pagination__link_prev {
-	background: url(../img/page-prev.png) no-repeat;
-}
-a.pagination__link_next {
-	background: url(../img/page-next.png) no-repeat;
-}
-a.pagination__link_first {
-	background: url(../img/page-first.png) no-repeat;
-}
-a.pagination__link_last {
-	background: url(../img/page-last.png) no-repeat;
-}
-*/
