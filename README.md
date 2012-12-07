@@ -9,7 +9,7 @@ __items__
 - - -
 
 __nav__
-* paginator
+* paginator  
 - - -
 
 __skeleton__
