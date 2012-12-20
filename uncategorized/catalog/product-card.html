@@ -1,0 +1,66 @@
+<!--
+    Depend:
+            BEM / items / button
+            
+-->
+
+<style>
+/* product-card ================*/
+.product-card {
+    width: 225px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    position: relative;
+}
+.product-card__pic-wrap {
+    width: 225px;
+    height: 178px;
+    overflow: hidden;
+    background: #eee;    
+}
+.product-card__pic-link {
+    width: 225px;
+    height: 178px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.product-card__status {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+/* /product-card ================*/
+</style>
+
+<!--product-card-->
+<section class="product-card">
+
+	<!-- product-card__header -->
+	<header class="product-card__header">    
+    
+        <div class="product-card__status">NEW!</div>
+        <div class="product-card__pic-wrap">
+        	<a href="#" class="product-card__pic-link">
+            	<img class="product-card__pic" src="" width="225" height="178" alt="Изображение">
+            </a>
+        </div>
+        <h2 class="product-card__title"><a href="#" class="product-card__title-link">Товар</a></h2>
+        
+    </header>
+    <!-- /product-card__header -->
+    
+    <p class="product-card__info">Описание товара</p>
+
+    <!--product-card__footer-->
+    <footer class="product-card__footer">
+    
+        <div class="product-card__price">999 999 <span class="product-card__currency">$</span></div>
+        <span class="button button_product-card-tocart">купить</span>
+        
+    </footer>
+    <!--/product-card__footer-->
+    
+</section>
+<!--/product-card-->
