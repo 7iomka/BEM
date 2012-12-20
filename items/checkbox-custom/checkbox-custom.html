@@ -1,0 +1,106 @@
+<!--
+    Depend on:
+            img/checkbox.gif
+-->
+
+<style>
+    .checkbox {
+        margin: 0;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .niceCheck {
+        width: 17px;
+        height: 17px;
+        display: inline-block;
+        vertical-align: middle;        
+        background: url(img/checkbox.gif);
+        overflow: hidden;
+        cursor: pointer;        
+    }
+    .niceChecked {
+        background-position: 0 -17px;
+    }
+    .niceCheck > input {
+        margin-left: -100px;
+    }
+    .niceCheckDisabled {
+        background-position: 0 -34px;
+        cursor: default;
+    }    
+</style>
+
+<script>
+$(document).ready(function(){
+    $( '.niceCheck' ).each( function() { changeCheckStart( $( this ) ) } );
+});
+
+function changeCheck( event ) {
+
+    var    $self = $( this ),
+            input = $self.find( 'input' ).eq(0);
+    
+    if( $self.attr( 'class' ).indexOf( 'niceCheckDisabled' ) == -1 )
+    {    
+        if( !input.attr( 'checked' ) ) {
+            $self.addClass( 'niceChecked' );
+            input.attr( 'checked', true);
+        } else {
+            $self.removeClass( 'niceChecked' );
+            input.attr( 'checked', false).focus();
+        };
+    };
+    
+    return true;
+}
+
+
+function changeVisualCheck( input ) {
+    var wrapInput = input.parent();
+    
+    if( !input.attr( 'checked' ) ) {
+        wrapInput.removeClass( 'niceChecked' );
+    } else {
+        wrapInput.addClass( 'niceChecked' );
+    }
+};
+
+
+function changeCheckStart( $self ) {
+
+    try {
+        var     checkName = $self.attr("name"),
+                checkId = $self.attr("id"),
+                checkChecked = $self.attr("checked"),
+                checkDisabled = $self.attr("disabled"),
+                checkTab = $self.attr("tabindex"),
+                checkValue = $self.attr("value");
+                
+        if( checkChecked ) {
+            $self.after("<span class='niceCheck niceChecked'>\
+                                <input type='checkbox' name='"+checkName+"' id='"+checkId+"' checked='"+checkChecked+"' value='"+checkValue+"' tabindex='"+checkTab+"'>\
+                            </span>");
+        } else {
+            $self.after("<span class='niceCheck'>\
+                                <input type='checkbox' name='"+checkName+"' id='"+checkId+"' value='"+checkValue+"' tabindex='"+checkTab+"' />\
+                            </span>");
+        };
+        
+        if( checkDisabled )
+        {
+            $self.next().addClass( 'niceCheckDisabled' );
+            $self.next().find( 'input' ).eq( 0 ).attr( 'disabled', 'disabled' );
+        };
+        
+        $self.next().on( 'mousedown', changeCheck );
+        $self.next().find( 'input' ).eq(0).on( 'change', function() { changeVisualCheck( $( this ) ) } );
+        
+        $self.remove();
+        
+    } catch(e) {};
+
+    return true;
+}
+</script>
+
+<input type="checkbox" class="niceCheck" id="niceCheck">
