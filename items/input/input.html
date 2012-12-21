@@ -1,6 +1,6 @@
-<style>
 .input {
     padding: 2px 3px;
+	margin: 0;	
     border: 1px solid #999;
     color: #000;
     font: 12px/15px Verdana, Geneva, sans-serif;
@@ -9,6 +9,170 @@
     background: #fff;
     outline: none;
 }
-</style>
-<input type="text" class="input" id="input" value="">
 
+.input[type=number] {
+	height: 26px;
+	box-sizing: border-box;
+}
+
+
+
+/* CSS for TypeNumberReplacer */
+/* Если инпуты будут заменены */
+.input-type-number__layout {
+	display: inline-block;
+	position: relative;
+}
+
+.input.input-type-number {
+	padding-right: 16px;
+}
+
+.input-type-number__btn {
+	width: 16px;
+	height: 12px;
+	position: absolute;
+	top: 1px;
+	right: 0;
+	z-index: 10;
+	margin: 0;
+	padding: 0;
+	font-size: 6px;
+	color: #333;
+	outline: none;
+}
+.input-type-number_spin-down {
+	top: auto;
+	bottom: 1px;
+}
+
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+function TypeNumberReplacer( selector ){
+	
+	// check for input[type=number] supporting
+	var input = document.createElement( 'input' );
+	input.setAttribute( 'type', 'number');
+	
+	if ( input.type == 'text' ) {
+		this.selector = selector ? selector : 'input[type=number]';
+		this.init();
+	} return false;
+};
+
+TypeNumberReplacer.prototype = {
+	// destroy number emulation method
+	// params:
+	// 		selector[string]: element's css selector
+	destroy: function( selector ){
+		var	self = this;
+		
+		if ( !selector ) selector = '.input-type-number';
+		
+		$( selector ).each( function( key, value ){
+			$( this )
+				.removeClass( 'input-type-number' )
+				.prop( 'type', 'number' )
+				.parent().find( '.input-type-number__btn' ).remove();
+			$( this ).unwrap();
+		} );
+		
+		return this;
+	},
+	// init replacing
+	init: function(){
+		var	self = this;
+		
+		// replace the input type and add the additional changes to the DOM around the input
+		$( self.selector ).each( function( key, value ){
+			$( this )
+				.prop( 'type', 'text' )
+				.addClass( 'input-type-number' )
+				.wrap( '<div class="input-type-number__layout"></div>' )
+				.after( '<input type="button" class="input-type-number__btn input-type-number_spin-up" value="&#9650;"><input type="button" class="input-type-number__btn input-type-number_spin-down" value="&#9660;">' );
+		} );
+		
+		// event's handlers initialization
+		self.controls();
+		
+		return this;
+	},
+	controls: function(){
+		var	self = this;
+
+		// handler for input button's mousedown event
+		function mouseDownHandler( $self ){
+			var	$input = $self.parent().find( '.input-type-number' ).eq( 0 ),
+					// get the input params
+					step = parseFloat( $input.attr( 'step' ) ),
+					maxVal = parseFloat( $input.attr( 'max' ) ),
+					minVal = parseFloat( $input.attr( 'min' ) ),
+					val = parseFloat( $input.val() );
+					
+			// check button type ( up or down )
+			if ( $self.hasClass( 'input-type-number_spin-up' ) ) {
+				var	newVal = val + step;
+				// change value if new value not bigger then max
+				if ( newVal <= maxVal ) {
+					$input.attr( 'value', newVal );
+					// trigger change event of the input
+					$input.trigger( 'change' );
+				} else return false;					
+			} else {
+				var	newVal = val - step;
+				// change value if new value not smaller then min
+				if ( newVal >= minVal ) {
+					$input.attr( 'value', newVal );
+					// trigger change event of the input				
+					$input.trigger( 'change' );						
+				} else return false;					
+			};
+		};
+		
+		// events for input buttons
+		$( '.input-type-number__btn' ).on( {
+			mousedown: function(){
+				var	$self =  $( this );
+				
+				mouseDownHandler( $self );
+				// wait a few ms then spin the numbers
+				self.downTimeout = setTimeout( function(){
+					self.downInterval = setInterval( function(){
+						mouseDownHandler( $self );
+					}, 100 );
+				}, 300 );
+				
+			},
+			mouseup: function(){
+				clearTimeout( self.downTimeout );								
+				clearInterval( self.downInterval );
+			}
+		} );
+		
+		return this;
+	}
+};
+
+$( document ).ready( function(){
+	/*
+		Проверок на поддержку [type=number] делать не нужно. Срипт решит и заменит сам.
+		
+		Инициализация ( с заменой всех инпутов на странице ):		new TypeNumberReplacer();
+		Инициализация по селектору: new TypeNumberReplacer( '#myInput' );
+		...
+		Доступен метод destroy() - возвращает все в исходную:
+			var	replacer = new TypeNumberReplacer( '#myInput' );
+			replacer.destroy();
+			...			
+			или по селектору:
+				replacer.destroy( '.myInput' );
+			
+	*/
+	new TypeNumberReplacer();
+} );
+
+</script>
+
+<input type="number" class="input" id="input" max="50" min="1" step="1" value="1">
