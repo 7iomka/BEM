@@ -29,6 +29,5 @@ __skeleton__
 __uncategorized__
 * [product-card](https://github.com/bikkuri/BEM/tree/master/uncategorized/product-card)
 * [rating](https://github.com/bikkuri/BEM/tree/master/uncategorized/rating)
-![Pagination](https://github.com/bikkuri/BEM/blob/master/uncategorized/rating/rating.png?raw=true)
 
 - - -
