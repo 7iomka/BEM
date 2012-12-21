@@ -19,7 +19,7 @@ __items__
 - - -
 
 __nav__
-* [pagination](https://github.com/bikkuri/BEM/tree/master/items/pagination)
+* [pagination](https://github.com/bikkuri/BEM/tree/master/nav/pagination)
 
 - - -
 
@@ -27,7 +27,7 @@ __skeleton__
 - - -
 
 __uncategorized__
-* [product-card](https://github.com/bikkuri/BEM/tree/master/items/product-card)
-* [rating](https://github.com/bikkuri/BEM/tree/master/items/rating)
+* [product-card](https://github.com/bikkuri/BEM/tree/master/uncategorized/product-card)
+* [rating](https://github.com/bikkuri/BEM/tree/master/uncategorized/rating)
 
 - - -
