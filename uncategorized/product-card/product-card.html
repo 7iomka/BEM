@@ -1,6 +1,7 @@
 <!--
     Depend:
             1. BEM/items/button
+            1. BEM/items/input           
             2. BEM/uncategorized/rating
     
     
@@ -24,6 +25,36 @@
 -->
 
 <style>
+.input {
+    padding: 2px 3px;
+    border: 1px solid #999;
+    color: #000;
+    font: 12px/15px Verdana, Geneva, sans-serif;
+    height: 24px;
+    display: inline-block;
+    background: #fff;
+    outline: none;
+}
+.btn:hover {
+    background: #eee;
+}    
+.btn:active {
+    background: #aaa;
+}
+.btn {
+    padding: 0;
+    border: none;
+    color: #fff;
+    font: 17px/30px Verdana, Geneva, sans-serif;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    background: #ccc;
+    outline: none;
+}
+
+
 /* product-card ================*/
 .product-card {
     vertical-align: top;
@@ -99,6 +130,8 @@
 
     
     <h1 class="product-card__title">Товар	</h1>        
+    
+    <div class="product-card__code">N4556654</div>
    
     <div class="product-card__info">Описание товара</div>
     
@@ -118,8 +151,9 @@
     	<div class="rtn__indicator" style="width: 0"></div>
     </div>
     <!-- /rating -->
-
-    <span class="button button_product-card-tocart button_a-buy">купить</span>
+	
+    <input type="number" class="input" max="" min="1" step="1" value="1">
+    <span class="btn btn_product-card-tocart btn_a-buy">купить</span>
     
     <a class="product-card__back" href="#">Назад</a>
     
