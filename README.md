@@ -1,7 +1,7 @@
 BEM
 ===
 __forms__
-* forms-search
+* forms-search  
 - - -
 
 __items__
@@ -27,5 +27,5 @@ __skeleton__
 
 __uncategorized__
 * product-card
-* rating
+* rating  
 - - -
