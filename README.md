@@ -1,7 +1,7 @@
 BEM
 ===
 __forms__
-* [forms-search](https://github.com/bikkuri/BEM/tree/master/forms)
+* [forms-search](https://github.com/bikkuri/BEM/tree/master/forms/forms-search)
 
 - - -
 
