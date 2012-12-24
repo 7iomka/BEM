@@ -20,6 +20,7 @@ __items__
 
 __nav__
 * [pagination](https://github.com/bikkuri/BEM/tree/master/nav/pagination)
+* [menu](https://github.com/bikkuri/BEM/tree/master/nav/menu)
 
 - - -
 
