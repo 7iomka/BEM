@@ -1,6 +1,6 @@
 __Vertical Menu:__
 
-[![Vertical Menu](https://github.com/bikkuri/BEM/blob/master/nav/menu/preview/menu-vertical.png?raw=true)](https://github.com/bikkuri/BEM/tree/master/nav/menu-vertical)
+[![Vertical Menu](https://github.com/bikkuri/BEM/blob/master/nav/menu/preview/menu-vertical.png?raw=true)](https://github.com/bikkuri/BEM/tree/master/nav/menu/menu-vertical)
 
 - - -
 
