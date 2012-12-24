@@ -11,45 +11,44 @@
 .menu__submenu-lnk:hover {
     text-decoration: none;
 }
+.menu__item_horizontal,
 .menu__submenu-item {
     line-height: normal;
     letter-spacing: 0;
     font-size: 12px;
 }
+.menu__item_horizontal {
+    display: inline-block;
+    position: relative;
+}
 
+    
 .menu_horizontal {
-	font-size: 0;
-	letter-spacing: -1px;
-	line-height: 0;
+    font-size: 0;
+    letter-spacing: -1px;
+    line-height: 0;
 }
 .menu__item_opened,
 .menu__item_active,
 .menu__submenu-item_active {
     cursor: default;
 }
-.menu__item_horizontal {
-    display: inline-block;
-    line-height: normal;
-    letter-spacing: 0;
-    font-size: 12px;
-	position: relative;
-}
 .menu__submenu_bottom {
-	position: absolute;
-	top: 100%;
-	left: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
 }
 </style>
 <ul class="menu menu_horizontal">
     <li class="menu__item menu__item_horizontal menu__item_active"><span class="menu__lnk-dis">Активный пункт</span></li>
     <li class="menu__item menu__item_horizontal menu__item_opened"><span class="menu__lnk-dis">Открытый пункт</span>
 
-		<!-- menu__submenu -->
+        <!-- menu__submenu -->
         <ul class="menu menu__submenu menu__submenu_bottom">
-        	<li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 1</a></li>
-        	<li class="menu_item menu__submenu-item menu__submenu-item_active"><span class="menu__lnk-dis menu__submenu-lnk-dis">Активный подпункт 2</span></li>
-        	<li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 3</a></li>
-        	<li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 4</a></li>                                    
+            <li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 1</a></li>
+            <li class="menu_item menu__submenu-item menu__submenu-item_active"><span class="menu__lnk-dis menu__submenu-lnk-dis">Активный подпункт 2</span></li>
+            <li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 3</a></li>
+            <li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 4</a></li>                                    
         </ul>
         <!-- /menu__submenu -->
         
