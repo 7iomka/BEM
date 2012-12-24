@@ -1,0 +1,39 @@
+<style>
+.menu,
+.menu__submenu {
+    list-style-type: none;
+}
+.menu__item_opened,
+.menu__item_active,
+.menu__submenu-item_active {
+    cursor: default;
+}
+.menu__lnk,
+.menu__submenu-lnk {
+    text-decoration: underline;
+}
+.menu__lnk:hover,
+.menu__submenu-lnk:hover {
+    text-decoration: none;
+}
+</style>
+<ul class="menu">
+    <li class="menu__item menu__item_active"><span class="menu__lnk-dis">Активный пункт</span></li>
+    <li class="menu__item menu__item_opened"><span class="menu__lnk-dis">Открытый пункт</span>
+
+		<!-- menu__submenu -->
+        <ul class="menu menu__submenu">
+        	<li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 1</a></li>
+        	<li class="menu_item menu__submenu-item menu__submenu-item_active"><span class="menu__lnk-dis menu__submenu-lnk-dis">Активный подпункт 2</span></li>
+        	<li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 3</a></li>
+        	<li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 4</a></li>                                    
+        </ul>
+        <!-- /menu__submenu -->
+        
+    </li>
+    <li class="menu__item"><a class="menu__lnk" href="#">Пункт 2</a></li>
+    <li class="menu__item"><a class="menu__lnk" href="#">Пункт 3</a></li>
+    <li class="menu__item"><a class="menu__lnk" href="#">Пункт 4</a></li>
+    <li class="menu__item"><a class="menu__lnk" href="#">Пункт 5</a></li>
+    <li class="menu__item"><a class="menu__lnk" href="#">Пункт 6</a></li>
+</ul>
