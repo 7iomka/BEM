@@ -6,4 +6,4 @@ __Vertical Menu:__
 
 __Horizontal Menu:__
 
-![Horizontal Menu](https://github.com/bikkuri/BEM/blob/master/nav/menu/preview/menu-horizontal.png?raw=true)
+[![Horizontal Menu](https://github.com/bikkuri/BEM/blob/master/nav/menu/preview/menu-horizontal.png?raw=true)](https://github.com/bikkuri/BEM/tree/master/nav/menu/menu-horizontal)
