@@ -7,3 +7,8 @@ __Vertical Menu:__
 __Horizontal Menu:__
 
 [![Horizontal Menu](https://github.com/bikkuri/BEM/blob/master/nav/menu/preview/menu-horizontal.png?raw=true)](https://github.com/bikkuri/BEM/tree/master/nav/menu/menu-horizontal/menu-horizontal.html)
+
+- - -
+
+
+[![Same stretch menu](https://github.com/bikkuri/BEM/blob/master/nav/menu/preview/menu-same-stretch.png?raw=true)](https://github.com/bikkuri/BEM/tree/master/nav/menu/menu-same-stretch/menu-same-stretch.html)

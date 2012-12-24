@@ -1,0 +1,92 @@
+<style>
+.menu,
+.menu__submenu {
+    list-style-type: none;
+}
+.menu__lnk,
+.menu__submenu-lnk {
+    text-decoration: underline;
+}
+.menu__lnk-dis,
+.menu__submenu-lnk-dis,
+.menu__lnk:hover,
+.menu__submenu-lnk:hover {
+    text-decoration: none;
+}
+.menu__submenu-item {
+    height: auto;
+}
+
+
+.menu__item_opened,
+.menu__item_active,
+.menu__submenu-item_active {
+    cursor: default;
+}
+.menu__submenu_bottom {
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+.menu__item-layout {
+    display: block;
+    position: relative;
+    border: 1px solid #000;    
+}
+
+
+.menu_same-stretch {
+    display: table;
+    width: 100%;
+}
+/* настройка внешних/внутренних отступов */
+.menu__layout {
+    display: block;
+    margin: 0 50px;
+}
+
+.menu__item_same-stretch {
+    display: table-cell;
+    text-align: center;
+    vertical-align: top;
+}
+
+/* высота пункта и вертикальное выравнивание задается здесь */
+.menu_same-stretch .menu__lnk {
+    display: table-cell;
+    height: 50px;
+    vertical-align: middle;
+    width: 9999px;
+}
+
+.menu_same-stretch .menu__submenu-lnk {
+    height: auto;
+    width: auto;
+    display: block;    
+}
+</style>
+<div class="menu menu_same-stretch">
+    <ul class="menu__layout">
+        <li class="menu__item menu__item_same-stretch menu__item_active"><span class="menu__item-layout"><span class="menu__lnk menu__lnk-dis">Активный пункт</span></span></li>
+        <li class="menu__item menu__item_same-stretch menu__item_opened">
+            <span class="menu__item-layout">
+                <span class="menu__lnk menu__lnk-dis">Открытый пункт</span>
+    
+                <!-- menu__submenu -->
+                <ul class="menu menu__submenu menu__submenu_bottom">
+                    <li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 1</a></li>
+                    <li class="menu_item menu__submenu-item menu__submenu-item_active"><span class="menu__lnk menu__submenu-lnk menu__submenu-lnk-dis">Активный подпункт 2</span></li>
+                    <li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 3</a></li>
+                    <li class="menu_item menu__submenu-item"><a class="menu__lnk menu__submenu-lnk" href="#">Подпункт 4</a></li>                                    
+                </ul>
+                <!-- /menu__submenu -->
+    
+            </span>        
+        </li>
+        <li class="menu__item menu__item_same-stretch"><span class="menu__item-layout"><a class="menu__lnk" href="#">Пункт 2</a></span></li>
+        <li class="menu__item menu__item_same-stretch"><span class="menu__item-layout"><a class="menu__lnk" href="#">Пункт 3</a></span></li>
+        <li class="menu__item menu__item_same-stretch"><span class="menu__item-layout"><a class="menu__lnk" href="#">Пункт 4</a></span></li>
+        <li class="menu__item menu__item_same-stretch"><span class="menu__item-layout"><a class="menu__lnk" href="#">Пункт 5</a></span></li>
+        <li class="menu__item menu__item_same-stretch"><span class="menu__item-layout"><a class="menu__lnk" href="#">Пункт 6</a></span></li>
+    </ul>
+</div>    
