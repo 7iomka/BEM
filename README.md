@@ -28,7 +28,7 @@ __skeleton__
 - - -
 
 __uncategorized__
-* [product-card](https://github.com/bikkuri/BEM/tree/master/uncategorized/product-card/preview.md)
+* [product-card](https://github.com/bikkuri/BEM/tree/master/uncategorized/product-card/PREVIEW.md)
 * [rating](https://github.com/bikkuri/BEM/tree/master/uncategorized/rating)
 
 - - -
