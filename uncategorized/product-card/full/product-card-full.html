@@ -1,0 +1,131 @@
+<!--
+    Depend:
+            1. BEM/items/button
+            1. BEM/items/input           
+            2. BEM/uncategorized/rating
+    
+    
+    Elements:
+    		1. product-card__status
+            2. product-card__pic-item
+                    - product-card__pic-link
+                    - product-card__pic
+            3. product-card__gallery
+                    - product-card__gallery-pic-item
+                    - product-card__gallery-pic-link
+                    - product-card__gallery-pic
+            4. product-card__title
+            5. product-card__info
+            6. product-card__features
+                    - product-card__features-name
+                    - product-card__features-descr
+            7. product-card__price
+	            	- product-card__price-value
+            8. product-card__back
+-->
+
+<style>
+/* product-card ================*/
+.product-card {
+    vertical-align: top;
+    position: relative;
+}
+
+.product-card__pic-item,
+.product-card__gallery-pic-item {
+    overflow: hidden;
+}
+.product-card__pic-link,
+.product-card__gallery-pic-link {
+	display: block;
+    text-align: center;
+	line-height: normal;
+}
+.product-card__pic,
+.product-card__gallery-pic {
+	vertical-align: middle;
+}
+.product-card__gallery {
+	font-size: 0;
+	line-height: 0;
+	letter-spacing: -1px;
+}
+.product-card__gallery-pic-item {
+	font-size: 12px;
+	letter-spacing: 0;
+	line-height: normal;
+	display: inline-block;
+}
+
+.product-card__features {
+	overflow: hidden;
+}
+.product-card__features-name {
+	float: left;
+}
+/* /product-card ================*/
+</style>
+
+<!--product-card-->
+<section class="product-card">
+
+    <div class="product-card__status">Акция!</div>
+
+    <div class="product-card__pic-item">
+        <a href="#" class="product-card__pic-link">
+            <img class="product-card__pic" src="" width="225" height="178" alt="Изображение">
+        </a>
+    </div>
+    
+    
+    <!-- product-card__gallery -->
+    <ul class="product-card__gallery">
+        <li class="product-card__gallery-pic-item">
+            <a href="#" class="product-card__gallery-pic-link">
+                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="Изображение">
+            </a>
+        </li>
+        <li class="product-card__gallery-pic-item">
+            <a href="#" class="product-card__gallery-pic-link">
+                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="Изображение">
+            </a>
+        </li>
+        <li class="product-card__gallery-pic-item">
+            <a href="#" class="product-card__gallery-pic-link">
+                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="Изображение">
+            </a>
+        </li>
+    </ul>
+    <!-- /product-card__gallery -->
+
+    
+    <h1 class="product-card__title">Товар	</h1>        
+    
+    <div class="product-card__code">N4556654</div>
+   
+    <div class="product-card__info">Описание товара</div>
+    
+    <!-- product-card__features -->
+    <dl class="product-card__features">
+    	<dt class="product-card__features-name">Название:</dt>
+    	<dd class="product-card__features-descr">Описание характеристики</dd>
+    	<dt class="product-card__features-name">Название:</dt>
+    	<dd class="product-card__features-descr">Описание характеристики</dd>
+    </dl>
+    <!-- /product-card__features -->
+
+    <div class="product-card__price">цена <span class="product-card__price-value">999 999</span> $</div>
+
+	<!-- rating -->
+	<div class="rtn">
+    	<div class="rtn__indicator" style="width: 0"></div>
+    </div>
+    <!-- /rating -->
+	
+    <input type="number" class="input" max="" min="1" step="1" value="1">
+    <span class="btn btn_product-card-tocart btn_a-buy">купить</span>
+    
+    <a class="product-card__back" href="#">Назад</a>
+    
+</section>
+<!--/product-card-->
