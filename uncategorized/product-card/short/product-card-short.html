@@ -1,0 +1,60 @@
+<!--
+    Depend:
+            1. BEM/items/button
+            1. BEM/items/input           
+    
+    
+    Elements:
+            1. product-card__status
+            2. product-card__pic-item
+                    - product-card__pic-link
+                    - product-card__pic
+            3. product-card__title
+            4. product-card__info
+            5. product-card__price
+                    - product-card__price-value
+-->
+
+<style>
+/* product-card ================*/
+.product-card {
+    vertical-align: top;
+    position: relative;
+}
+
+.product-card__pic-item {
+    overflow: hidden;
+}
+.product-card__pic-link {
+    display: block;
+    text-align: center;
+    line-height: normal;
+}
+.product-card__pic {
+    vertical-align: middle;
+}
+
+/* /product-card ================*/
+</style>
+
+<!--product-card-->
+<section class="product-card">
+
+    <div class="product-card__status">Акция!</div>
+
+    <div class="product-card__pic-item">
+        <a href="#" class="product-card__pic-link">
+            <img class="product-card__pic" src="" width="225" height="178" alt="Изображение">
+        </a>
+    </div>
+    
+    <h1 class="product-card__title">Товар</h1>        
+    <div class="product-card__code">N4556654</div>
+    <div class="product-card__info">Описание товара</div>
+    <div class="product-card__price">цена <span class="product-card__price-value">999 999</span> $</div>
+    
+    <input type="number" class="input" max="" min="1" step="1" value="1">
+    <span class="btn btn_product-card-tocart btn_a-buy">купить</span>
+    
+</section>
+<!--/product-card-->
