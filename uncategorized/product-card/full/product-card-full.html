@@ -67,65 +67,72 @@
 </style>
 
 <!--product-card-->
-<section class="product-card">
+<section class="product-card" itemscope itemtype="http://schema.org/Product">
 
-    <div class="product-card__status">РђРєС†РёСЏ!</div>
+    <div class="product-card__status">Акция!</div>
 
     <div class="product-card__pic-item">
-        <a href="#" class="product-card__pic-link">
-            <img class="product-card__pic" src="" width="225" height="178" alt="РР·РѕР±СЂР°Р¶РµРЅРёРµ">
+        <a href="#" class="product-card__pic-link" itemprop="url">
+            <img class="product-card__pic" src="" width="225" height="178" alt="Изображение" itemprop="image">
         </a>
     </div>
-    
-    
+
+
     <!-- product-card__gallery -->
     <ul class="product-card__gallery">
         <li class="product-card__gallery-pic-item">
             <a href="#" class="product-card__gallery-pic-link">
-                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="РР·РѕР±СЂР°Р¶РµРЅРёРµ">
+                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="Изображение">
             </a>
         </li>
         <li class="product-card__gallery-pic-item">
             <a href="#" class="product-card__gallery-pic-link">
-                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="РР·РѕР±СЂР°Р¶РµРЅРёРµ">
+                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="Изображение">
             </a>
         </li>
         <li class="product-card__gallery-pic-item">
             <a href="#" class="product-card__gallery-pic-link">
-                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="РР·РѕР±СЂР°Р¶РµРЅРёРµ">
+                <img class="product-card__gallery-pic" src="" width="225" height="178" alt="Изображение">
             </a>
         </li>
     </ul>
     <!-- /product-card__gallery -->
 
-    
-    <h1 class="product-card__title">РўРѕРІР°СЂ	</h1>        
-    
-    <div class="product-card__code">N4556654</div>
-   
-    <div class="product-card__info">РћРїРёСЃР°РЅРёРµ С‚РѕРІР°СЂР°</div>
-    
+
+    <h1 class="product-card__title" itemprop="name">Смазка Molykote NT-3245</h1>
+
+    <meta itemprop="brand" content="Molykote" />
+    <meta itemprop="model" content="NT-3245" />
+    <div class="product-card__code" itemprop="productID">N4556654</div>
+    <div class="product-card__info" itemprop="description">Описание товара</div>
+
     <!-- product-card__features -->
     <dl class="product-card__features">
-    	<dt class="product-card__features-name">РќР°Р·РІР°РЅРёРµ:</dt>
-    	<dd class="product-card__features-descr">РћРїРёСЃР°РЅРёРµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё</dd>
-    	<dt class="product-card__features-name">РќР°Р·РІР°РЅРёРµ:</dt>
-    	<dd class="product-card__features-descr">РћРїРёСЃР°РЅРёРµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё</dd>
+        <dt class="product-card__features-name">Название:</dt>
+        <dd class="product-card__features-descr">Описание характеристики</dd>
+        <dt class="product-card__features-name">Название:</dt>
+        <dd class="product-card__features-descr">Описание характеристики</dd>
     </dl>
     <!-- /product-card__features -->
 
-    <div class="product-card__price">С†РµРЅР° <span class="product-card__price-value">999 999</span> $</div>
+    <div class="product-card__price" itemprop="offers"  itemscope itemtype="http://schema.org/Offer">
+        цена <span class="product-card__price-value" itemprop="price">999</span>$
+        <meta itemprop="priceCurrency" content="RUR" />
+        <link class="product-card__availability" itemprop="availability" href="http://schema.org/InStock">
+    </div>
 
-	<!-- rating -->
-	<div class="rtn">
-    	<div class="rtn__indicator" style="width: 0"></div>
+    <!-- rating -->
+    <div class="rtn" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        <div class="rtn__indicator" style="width: 50%"></div>
+        <meta itemprop="ratingValue" content="2.5">
+        <meta itemprop="reviewCount" content="10">
     </div>
     <!-- /rating -->
-	
+
     <input type="number" class="input" max="" min="1" step="1" value="1">
-    <span class="btn btn_product-card-tocart btn_a-buy">РєСѓРїРёС‚СЊ</span>
-    
-    <a class="product-card__back" href="#">РќР°Р·Р°Рґ</a>
-    
+    <span class="btn btn_product-card-tocart btn_a-buy">купить</span>
+
+    <a class="product-card__back" href="#">Назад</a>
+
 </section>
 <!--/product-card-->
