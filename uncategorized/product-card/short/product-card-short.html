@@ -38,21 +38,29 @@
 </style>
 
 <!--product-card-->
-<section class="product-card">
+<section class="product-card" itemscope itemtype="http://schema.org/Product">
 
     <div class="product-card__status">Акция!</div>
 
     <div class="product-card__pic-item">
-        <a href="#" class="product-card__pic-link">
-            <img class="product-card__pic" src="" width="225" height="178" alt="Изображение">
+        <a href="#" class="product-card__pic-link" itemprop="url">
+            <img class="product-card__pic" src="#" width="225" height="178" alt="Изображение" itemprop="image">
         </a>
     </div>
     
-    <h1 class="product-card__title">Товар</h1>        
-    <div class="product-card__code">N4556654</div>
-    <div class="product-card__info">Описание товара</div>
-    <div class="product-card__price">цена <span class="product-card__price-value">999 999</span> $</div>
-    
+    <h1 class="product-card__title" itemprop="name">Смазка Molykote NT-3245</h1>
+
+    <meta itemprop="brand" content="Molykote" />
+    <meta itemprop="model" content="NT-3245" />
+    <div class="product-card__code" itempr="productID">N4556654</div>
+    <div class="product-card__info" itemprop="description">Описание товара</div>
+
+    <div class="product-card__price" itemprop="offers"  itemscope itemtype="http://schema.org/Offer">
+        цена <span class="product-card__price-value" itemprop="price">999</span>$
+        <meta itemprop="priceCurrency" content="RUR" />
+        <link class="product-card__availability" itemprop="availability" href="http://schema.org/InStock">
+    </div>
+
     <input type="number" class="input" max="" min="1" step="1" value="1">
     <span class="btn btn_product-card-tocart btn_a-buy">купить</span>
     
