@@ -1,0 +1,206 @@
+﻿<style>
+.authorization {
+    border: 1px solid #000;
+}
+.authorization__layout {
+    border: none;
+    padding: 5px;
+    margin: 0;
+}
+.input {
+    padding: 2px 3px;
+    margin: 0;
+    border: 1px solid #999;
+    color: #000;
+    font: 12px/15px Verdana, Geneva, sans-serif;
+    height: 24px;
+    display: inline-block;
+    background: #fff;
+    outline: none;
+}
+.input:focus:invalid {
+    border: 1px solid #f00;
+}
+
+.btn:hover {
+    background: #eee;
+}
+.btn:active {
+    background: #aaa;
+}
+.btn {
+    padding: 0;
+    border: none;
+    color: #fff;
+    font: 17px/30px Verdana, Geneva, sans-serif;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    background: #ccc;
+    outline: none;
+}
+</style>
+<script src="modernizr-2.6.2.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+$( function(){
+    new Authorization( $(authorization) );
+} );
+
+/*
+    Authorization
+
+    properties:
+        obj( authorization form );
+        request (authorization request)
+        elems( object elements ).
+
+    methods:
+        init (initialize object);
+        controls (object controls);
+        login;
+        validation.
+
+*/
+var Authorization = function( obj ) {
+    this.obj = obj;
+    this.request = new XMLHttpRequest();
+//    this.elems = {
+//        btnSend: this.obj.find( '#sendLogin' )
+//    };
+
+    this.init();
+};
+    Authorization.prototype = {
+        /*
+            init (initialize object)
+        */
+        init: function(){
+            var self = this;
+
+            self.controls();
+        },
+        /*
+            /init
+        */
+        /*
+            controls (object controls)
+        */
+        controls: function(){
+            var self = this;
+
+            //submit form
+            self.obj.on( 'submit', function(){
+                self.login();
+                return false;
+            } );
+        },
+        /*
+            /controls
+        */
+        /*
+            login
+        */
+        login: function(){
+            var self = this,
+                obj = self.obj;
+
+            if( self.validation() ) {
+                self.request.abort();
+                self.request = $.ajax( {
+                    url: obj.attr( 'action' ), // from form attribute action
+                    data: obj.serialize(), // form serialize
+                    dataType: 'json',
+                    timeout: 20000,
+                    type: "GET",
+                    success: function(msg, success, XMLHttpRequest){
+                        alert(XMLHttpRequest.statusText);
+                    },
+                    error: function(XMLHttpRequest){
+                        var status = XMLHttpRequest.status,
+                            statusText = XMLHttpRequest.statusText;
+
+                        if( statusText != "abort" ){
+                            if ( status == 401 ){
+                                alert(statusText);
+                            } else if ( status == 404 ){
+                                alert(statusText);
+                            } else {
+                                alert(statusText);
+                            }
+                        }
+                    }
+                } );
+            }
+        },
+        /*
+            /login
+        */
+        /*
+            validation
+         */
+        validation: function(){
+            var self = this,
+                required = $('[required="required"]'),
+                email = $('#input_login');
+
+
+            if( !Modernizr.input.required && required.length ){
+                var prov = true;
+
+                required.each( function(){
+                    if( $( this).val() == '' ){
+                        prov = false;
+                        return prov;
+                    }
+                } );
+                if( !prov ) {
+                    alert('Заполните обязательные поля');
+                    return prov;
+                }
+            }
+            if( !Modernizr.inputtypes.email && email.length ){
+                var prov = true;
+
+                email.each( function(){
+                    if( !(/^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/i.test($( this ).val()) ) ){
+                        prov = false;
+                        return prov;
+                    }
+                } );
+                if( !prov ) {
+                    alert('Введите email');
+                    return prov;
+                }
+
+            }
+
+            return true;
+
+        }
+        /*
+            /validation
+        */
+    };
+
+</script>
+<!-- breadcrumbs -->
+<form action="authorization.php" class="authorization" id="authorization">
+    <fieldset class="authorization__layout">
+        <label class="authorization__label" for="input_login">Логин:</label>
+        <input type="email" class="input" id="input_login" name="input_login" required="required">
+    </fieldset>
+    <fieldset class="authorization__layout">
+        <label class="authorization__label" for="input_password">Пароль:</label>
+        <input type="password" class="input" id="input_password" name="input_password" required="required">
+    </fieldset>
+    <fieldset class="authorization__layout">
+        <input class="btn" id="sendLogin" type="submit" value="Войти" />
+    </fieldset>
+    <div class="authorization__layout">
+        <a class="authorization__registration" href="#">Регистрация</a>
+        <a class="authorization__forgot-pass" href="#">Забыли пароль</a>
+    </div>
+</form>
+<!-- /breadcrumbs -->
