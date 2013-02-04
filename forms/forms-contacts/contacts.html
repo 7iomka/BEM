@@ -1,0 +1,242 @@
+<html>
+<head>
+
+<style>
+	.contacts-form {
+		border: 1px solid #000;
+	}
+	
+	.contacts-form__layout {
+		border: none;
+		padding: 5px;
+		margin: 0;
+	}
+	
+	.contacts-form__input {
+        vertical-align: top;
+		padding: 2px 3px;
+		margin: 0;
+		border: 1px solid #999;
+		color: #000;
+		font: 12px/15px Verdana, Geneva, sans-serif;
+		height: 24px;
+		display: inline-block;
+		background: #fff;
+		outline: none;
+	}
+	
+	.contacts-form__input:focus:invalid,
+    .contacts-form__textarea:focus:invalid {
+		border: 1px solid #f00;
+	}
+
+    .contacts-form__label {
+        vertical-align: top;
+    }
+
+    .textarea {
+        width: 200px;
+        height: 100px;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        border: 1px solid #999;
+        background: #fff;
+        resize: none;
+        outline: none;
+    }
+	
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<script>
+    //==============================================================================================================
+    // Validate field of registration form
+    //==============================================================================================================
+    var validateForm = function(FormObject) {
+        var requiredField = $(FormObject).find("[required]"),
+            notValidAll = true,
+            errorMessage = '';
+
+        for (var i = 0; i < requiredField.length; i++) {
+
+            var notValid = false,
+                validMail = true;
+
+            if (requiredField.eq(i).attr("disabled") === "disabled") {
+                continue;
+            }
+
+            if (requiredField.eq(i).attr("type") === 'text') {
+                if (requiredField.eq(i).val() === '' || requiredField.eq(i).val() === requiredField.eq(i).attr("placeholder")) {
+                    notValid = true;
+                }
+            }
+            else if (requiredField.eq(i).attr("type") === 'tel') {
+                if (requiredField.eq(i).val() === '' || requiredField.eq(i).val() === requiredField.eq(i).attr("placeholder")) {
+                    notValid = true;
+                }
+            }
+            else if (requiredField.eq(i).attr("type") === 'email') {
+                validMail = /^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/i.test(requiredField.eq(i).val());
+                if (!validMail) {
+                    notValid = true;
+                }
+            }
+            else if (requiredField.eq(i).attr("type") === 'password') {
+                if (requiredField.eq(i).val() === '' || requiredField.eq(i).val() === requiredField.eq(i).attr("placeholder")) {
+                    notValid = true;
+                }
+            }
+
+            // if input field is invalid, show error message
+            if (notValid) {
+                notValidAll = false;
+
+                // show error message
+                errorMessage += 'Ошибка заполнения поля типа: ' + requiredField.eq(i).attr("type") + ' ';
+            }
+        }
+
+        if (errorMessage) {
+            alert(errorMessage);
+        }
+
+        return notValidAll;
+    };
+
+    //==================================================================================================================
+    // Registration object
+    //==================================================================================================================
+	var ContactsForm = function (obj) {
+
+        "use strict";
+
+		var Self = this,
+            currentForm = obj;
+
+        // reference to validation function
+        this.validateFunction = null;
+
+        //==============================================================================================================
+        // Validate registration form
+        //==============================================================================================================
+        this.validation = function() {
+            if ( Self.validateFunction ) {
+                return Self.validateFunction(currentForm);
+            }
+            else {
+                return true;
+            }
+        };
+
+        //==============================================================================================================
+        // Submit registration form data
+        //==============================================================================================================
+        this.submitForm = function() {
+
+            if ( !Self.validation() ) {
+                return;
+            }
+
+            $.ajax({
+                url: $(currentForm).attr('action'),
+                type: 'post',
+                data: $(currentForm).serialize(),
+                timeout: 20000,
+                dataType: 'json',
+                success: function(serverAnswer, statusText, xhr) {
+                    alert(xhr.statusText);
+                },
+                error: function(xhr) {
+                    var status = xhr.status,
+                        statusText = xhr.statusText;
+
+                    if(statusText !== "abort") {
+
+                        if ( status === 401 ) {
+                            alert(statusText);
+                        }
+                        else if (status === 404) {
+                            alert(statusText);
+                        }
+                        else {
+                            alert(statusText);
+                        }
+
+                    }
+
+                }
+            });
+
+        };
+
+        //==============================================================================================================
+        // add event listener to registration form controls
+        //==============================================================================================================
+        this.addEventList = function () {
+
+            //==========================================================================================================
+            // submit form
+            //==========================================================================================================
+            $(currentForm).on('submit', function() {
+
+                Self.submitForm();
+
+                return false;
+            });
+
+        };
+
+		//==============================================================================================================
+        // initialization registration form object
+        //==============================================================================================================
+		this.init = function() {
+            this.addEventList();
+		};
+		
+		return this.init();
+	};
+
+    $(document).ready(function() {
+        var contactsForm = new ContactsForm( document.getElementById('contacts-form') );
+        contactsForm.validateFunction = validateForm;
+    });
+	
+</script>
+
+</head>
+
+<body>
+
+    <form action="contacts-form.php" class="contacts-form" id="contacts-form">
+
+        <fieldset class="contacts-form__layout">
+            <label class="contacts-form__label" for="contacts-form__input_name">Ваше имя</label>
+            <input type="text" class="contacts-form__input" id="contacts-form__input_name" name="name" required>
+        </fieldset>
+
+        <fieldset class="contacts-form__layout">
+            <label class="contacts-form__label" for="contacts-form__input_email">Электронная почта</label>
+            <input type="email" class="contacts-form__input" id="contacts-form__input_email" name="email" required>
+        </fieldset>
+
+        <fieldset class="contacts-form__layout">
+            <label class="contacts-form__label" for="contacts-form__input_comments">Коментарий</label>
+            <textarea class="textarea contacts-form__textarea" id="contacts-form__input_comments" name="comments" required ></textarea>
+        </fieldset>
+
+        <fieldset class="contacts-form__layout">
+            <label class="contacts-form__label" for="contacts-form__input_captcha">Введие код:</label>
+            <input type="tel" class="contacts-form__input" id="contacts-form__input_captcha" name="captcha" required>
+            <img src="contacts_from_code.png" class="contacts-form__captcha" />
+        </fieldset>
+
+        <fieldset class="contacts-form__layout">
+            <input type="submit" class="button contacts-form_button" id="contacts-form_button">
+        </fieldset>
+
+    </form>
+</body>
+</html>
