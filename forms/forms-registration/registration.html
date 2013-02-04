@@ -1,0 +1,222 @@
+<html>
+<head>
+
+<style>
+	.registration {
+		border: 1px solid #000;
+	}
+	
+	.registration__layout {
+		border: none;
+		padding: 5px;
+		margin: 0;
+	}
+	
+	.registration__input {
+		padding: 2px 3px;
+		margin: 0;
+		border: 1px solid #999;
+		color: #000;
+		font: 12px/15px Verdana, Geneva, sans-serif;
+		height: 24px;
+		display: inline-block;
+		background: #fff;
+		outline: none;
+	}
+	
+	.registration__input:focus:invalid {
+		border: 1px solid #f00;
+	}
+	
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<script>
+    //==============================================================================================================
+    // Validate field of registration form
+    //==============================================================================================================
+    var validateForm = function(FormObject) {
+        var requiredField = $(FormObject).find("[required]"),
+            notValidAll = true,
+            errorMessage = '';
+
+        for (var i = 0; i < requiredField.length; i++) {
+
+            var notValid = false,
+                validMail = true;
+
+            if (requiredField.eq(i).attr("disabled") === "disabled") {
+                continue;
+            }
+
+            if (requiredField.eq(i).attr("type") === 'text') {
+                if (requiredField.eq(i).val() === '' || requiredField.eq(i).val() === requiredField.eq(i).attr("placeholder")) {
+                    notValid = true;
+                }
+            }
+            else if (requiredField.eq(i).attr("type") === 'tel') {
+                if (requiredField.eq(i).val() === '' || requiredField.eq(i).val() === requiredField.eq(i).attr("placeholder")) {
+                    notValid = true;
+                }
+            }
+            else if (requiredField.eq(i).attr("type") === 'email') {
+                validMail = /^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/i.test(requiredField.eq(i).val());
+                if (!validMail) {
+                    notValid = true;
+                }
+            }
+            else if (requiredField.eq(i).attr("type") === 'password') {
+                if (requiredField.eq(i).val() === '' || requiredField.eq(i).val() === requiredField.eq(i).attr("placeholder")) {
+                    notValid = true;
+                }
+            }
+
+            // if input field is invalid, show error message
+            if (notValid) {
+                notValidAll = false;
+
+                // show error message
+                errorMessage += 'Ошибка заполнения поля типа: ' + requiredField.eq(i).attr("type") + ' ';
+            }
+        }
+
+        if (errorMessage) {
+            alert(errorMessage);
+        }
+
+        return notValidAll;
+    };
+
+    //==================================================================================================================
+    // Registration object
+    //==================================================================================================================
+	var Registration = function (obj) {
+
+        "use strict";
+
+		var Self = this,
+            currentForm = obj;
+
+        // reference to validation function
+        this.validateFunction = null;
+
+        //==============================================================================================================
+        // Validate registration form
+        //==============================================================================================================
+        this.validation = function() {
+            if ( Self.validateFunction ) {
+                return Self.validateFunction(currentForm);
+            }
+            else {
+                return true;
+            }
+        };
+
+        //==============================================================================================================
+        // Submit registration form data
+        //==============================================================================================================
+        this.submitForm = function() {
+
+            if ( !Self.validation() ) {
+                return;
+            }
+            $.ajax({
+                url: $(currentForm).attr('action'),
+                type: 'post',
+                data: $(currentForm).serialize(),
+                timeout: 20000,
+                dataType: 'json',
+                success: function(serverAnswer, statusText, xhr) {
+                    alert(xhr.statusText);
+                },
+                error: function(xhr) {
+                    var status = xhr.status,
+                        statusText = xhr.statusText;
+
+                    if(statusText !== "abort") {
+
+                        if ( status === 401 ) {
+                            alert(statusText);
+                        }
+                        else if (status === 404) {
+                            alert(statusText);
+                        }
+                        else {
+                            alert(statusText);
+                        }
+
+                    }
+
+                }
+            });
+
+        };
+
+        //==============================================================================================================
+        // add event listener to registration form controls
+        //==============================================================================================================
+        this.addEventList = function () {
+
+            //==========================================================================================================
+            // submit form
+            //==========================================================================================================
+            $(currentForm).on('submit', function() {
+
+                Self.submitForm();
+
+                return false;
+            });
+
+        };
+
+		//==============================================================================================================
+        // initialization registration form object
+        //==============================================================================================================
+		this.init = function() {
+            this.addEventList();
+		};
+		
+		return this.init();
+	};
+
+    $(document).ready(function() {
+        var registration = new Registration( document.getElementById('registration-form') );
+        registration.validateFunction = validateForm;
+    });
+	
+</script>
+
+</head>
+
+<body>
+
+    <form action="registration.php" class="registration" id="registration-form">
+
+        <fieldset class="registration__layout">
+            <label class="registration__label" for="registration__input_login">Логин</label>
+            <input type="text" class="registration__input" id="registration__input_login" name="login" required="required">
+        </fieldset>
+
+        <fieldset class="registration__layout">
+            <label class="registration__label" for="registration__input_login">Пароль</label>
+            <input type="password" class="registration__input" id="registration__input_password" name="password" required="required">
+        </fieldset>
+
+        <fieldset class="registration__layout">
+            <label class="registration__label" for="registration__input_email">e-mail:</label>
+            <input type="email" class="registration__input" id="registration__input_email" name="email" required="required">
+        </fieldset>
+
+        <fieldset class="registration__layout">
+            <label class="registration__label" for="registration__input_phone">Телефон:</label>
+            <input type="tel" class="registration__input" id="registration__input_phone" name="tel" required="required">
+        </fieldset>
+
+        <fieldset class="registration__layout">
+            <input type="submit" class="button registration_button" id="registration_button">
+        </fieldset>
+
+    </form>
+</body>
+</html>
